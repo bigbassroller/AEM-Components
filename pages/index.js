@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Container from '../components/container'
-import MoreStories from '../components/more-stories'
+import Sidebar from '../components/sidebar'
 import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
@@ -25,7 +25,7 @@ export default function Index({ allPosts: { edges }, preview }) {
               slug={heroPost.slug}
             />
           )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          {morePosts.length > 0 && <Sidebar posts={morePosts} />}
         </Container>
       </Layout>
     </>
