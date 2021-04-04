@@ -66,8 +66,6 @@ export async function getStaticProps({ params, preview = false, previewData }) {
 
 export async function getStaticPaths() {
   const allPosts = await getAllPostsWithSlug()
-  console.log("😘 getStaticPaths allPosts")
-  console.log(allPosts)
 
   return {
     paths: allPosts.edges.map(({ node }) => `/aemcomponents/${node.slug}`) || [],
