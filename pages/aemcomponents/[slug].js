@@ -32,7 +32,7 @@ export default function Post({ post, posts, preview }) {
         ) : (
           <>
             {morePosts.length > 0 && <Sidebar posts={morePosts} />}
-            <article>
+            <article className="content-wrapper">
               <Head>
                 <title>
                   {post.title} | Next.js Blog Example with {CMS_NAME}
