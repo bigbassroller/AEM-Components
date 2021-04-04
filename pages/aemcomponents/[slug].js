@@ -13,6 +13,8 @@ import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
 import Tags from '../../components/tags'
 
+import PanelBtn from '../../components/panel-btn'
+
 export default function Post({ post, posts, preview }) {
   const router = useRouter()
   const morePosts = posts?.edges
@@ -42,6 +44,22 @@ export default function Post({ post, posts, preview }) {
               <PostHeader
                 title={post.title}
               />
+              <div className="buttons">
+                <PanelBtn
+                  title="Technical Documentation"
+                  content="Github"
+                  url={post.aemComponentsFields.githubUrl}
+                  logo_name="Github"
+                  logo_url="github-logo.svg"
+                />
+                <PanelBtn
+                  title="Using Core Components"
+                  content="Adobe Help Center"
+                  url={post.aemComponentsFields.adobeUrl}
+                  logo_name="Adobe"
+                  logo_url="adobe-logo.svg"
+                />
+              </div>
             </article>
             <SectionSeparator />
             {morePosts.length > 0 && <Sidebar posts={morePosts} />}
