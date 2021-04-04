@@ -27,7 +27,6 @@ export default function Post({ post, posts, preview }) {
   return (
     <Layout preview={preview}>
       <ContainerWithSidebar>
-        <Header />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (

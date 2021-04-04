@@ -24,7 +24,7 @@
     "postcss-nested": "^5.0.5",
     "postcss-preset-env": "^6.7.0",
     "postcss-viewport-height-correction": "^1.1.1",
-    "tailwindcss": "^1.4.6"
+    "tailwindcss": "^2.0.3"
   },
   "license": "MIT"
 }
