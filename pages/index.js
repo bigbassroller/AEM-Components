@@ -4,7 +4,7 @@ import MoreStories from '../components/more-stories'
 import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
-import { getAllPostsForHome, getAllAemComponents } from '../lib/api'
+import { getAllPostsForHome } from '../lib/api'
 import { CMS_NAME } from '../lib/constants'
 
 export default function Index({ allPosts: { edges }, preview }) {
@@ -23,7 +23,6 @@ export default function Index({ allPosts: { edges }, preview }) {
             <HeroPost
               title={heroPost.title}
               slug={heroPost.slug}
-
             />
           )}
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}
