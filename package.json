@@ -18,8 +18,12 @@
     "react-tabs": "^3.2.1"
   },
   "devDependencies": {
+    "autoprefixer": "^10.2.5",
     "postcss-flexbugs-fixes": "4.2.1",
+    "postcss-import": "^14.0.1",
+    "postcss-nested": "^5.0.5",
     "postcss-preset-env": "^6.7.0",
+    "postcss-viewport-height-correction": "^1.1.1",
     "tailwindcss": "^1.4.6"
   },
   "license": "MIT"

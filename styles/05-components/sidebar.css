@@ -1,0 +1,9 @@
+/* Sidebar */
+.sidebar {
+	.nav-wrapper {
+		@apply bg-white;
+		.nav {
+			@apply px-8;
+		}
+	}
+}

@@ -1,6 +1,10 @@
 module.exports = {
   purge: ['./components/**/*.js', './pages/**/*.js'],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+    },
     extend: {
       colors: {
         'accent-1': '#FAFAFA',
@@ -8,6 +12,7 @@ module.exports = {
         'accent-7': '#333',
         success: '#0070f3',
         cyan: '#79FFE1',
+        white: '#FFFFFF',
       },
       spacing: {
         28: '7rem',
