@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import Container from '../../components/container'
+import ContainerWithSidebar from '../../components/container-with-sidebar'
 import PostBody from '../../components/post-body'
 import Sidebar from '../../components/sidebar'
 import Header from '../../components/header'
@@ -23,7 +23,7 @@ export default function Post({ post, posts, preview }) {
 
   return (
     <Layout preview={preview}>
-      <Container>
+      <ContainerWithSidebar>
         <Header />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
@@ -47,7 +47,7 @@ export default function Post({ post, posts, preview }) {
             {morePosts.length > 0 && <Sidebar posts={morePosts} />}
           </>
         )}
-      </Container>
+      </ContainerWithSidebar>
     </Layout>
   )
 }
