@@ -14,7 +14,7 @@ export default function HeroPost({
   return (
     <section>
       <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
-        <Link as={`/posts/${slug}`} href="/posts/[slug]">
+        <Link as={`/aemcomponents/${slug}`} href="/aemcomponents/[slug]">
           <a
             className="hover:underline"
             dangerouslySetInnerHTML={{ __html: title }}

@@ -41,17 +41,8 @@ export default function Post({ post, posts, preview }) {
               </Head>
               <PostHeader
                 title={post.title}
-                coverImage={post.featuredImage?.node}
-                date={post.date}
-                author={post.author?.node}
-                categories={post.categories}
               />
-              <PostBody content={post.content} />
-              <footer>
-                {post.tags.edges.length > 0 && <Tags tags={post.tags} />}
-              </footer>
             </article>
-
             <SectionSeparator />
             {morePosts.length > 0 && <MoreStories posts={morePosts} />}
           </>
@@ -67,17 +58,19 @@ export async function getStaticProps({ params, preview = false, previewData }) {
   return {
     props: {
       preview,
-      post: data.post,
-      posts: data.posts,
+      post: data.aemcomponent,
+      posts: data.aemcomponents,
     },
   }
 }
 
 export async function getStaticPaths() {
   const allPosts = await getAllPostsWithSlug()
+  console.log("😘 getStaticPaths allPosts")
+  console.log(allPosts)
 
   return {
-    paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
+    paths: allPosts.edges.map(({ node }) => `/aemcomponents/${node.slug}`) || [],
     fallback: true,
   }
 }
