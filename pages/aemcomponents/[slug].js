@@ -32,6 +32,7 @@ export default function Post({ post, posts, preview }) {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
+            {morePosts.length > 0 && <Sidebar posts={morePosts} />}
             <article>
               <Head>
                 <title>
@@ -82,7 +83,6 @@ export default function Post({ post, posts, preview }) {
               ))}
             </article>
             <SectionSeparator />
-            {morePosts.length > 0 && <Sidebar posts={morePosts} />}
           </>
         )}
       </ContainerWithSidebar>
