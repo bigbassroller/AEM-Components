@@ -14,6 +14,7 @@ import { CMS_NAME } from '../../lib/constants'
 import Tags from '../../components/tags'
 
 import PanelBtn from '../../components/panel-btn'
+import Example from '../../components/example'
 
 export default function Post({ post, posts, preview }) {
   const router = useRouter()
@@ -41,8 +42,11 @@ export default function Post({ post, posts, preview }) {
                   content={post.featuredImage?.node?.sourceUrl}
                 />
               </Head>
-              <PostHeader
-                title={post.title}
+              <div className="entry-header">
+                <h1 className="entry-title">{post.title}</h1>
+              </div>
+              <div className="entry-content"
+                dangerouslySetInnerHTML={{ __html: post.content }}
               />
               <div className="buttons">
                 <PanelBtn
@@ -60,6 +64,22 @@ export default function Post({ post, posts, preview }) {
                   logo_url="adobe-logo.svg"
                 />
               </div>
+              <div className="entry-header">
+                <h3 className="entry-title">Examples: </h3>
+              </div>
+              {post.aemComponentsFields.examples.map((node, index) => (
+                <Example
+                  key={index}
+                  content={node.content}
+                  properties={node.properties}
+                  markup={node.markup}
+                  json={node.json}
+                  postcss={node.postcss}
+                  css={node.css}
+                  title={node.title}
+                  index={index}
+                />
+              ))}
             </article>
             <SectionSeparator />
             {morePosts.length > 0 && <Sidebar posts={morePosts} />}
