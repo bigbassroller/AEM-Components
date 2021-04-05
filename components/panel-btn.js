@@ -13,6 +13,8 @@ logo_url
 	      <Logo
 	      name={logo_name}
 	      url={logo_url}
+        height={"24"}
+        width={"24"}
 	      />
       </span>
       <span className="content-wrap">
