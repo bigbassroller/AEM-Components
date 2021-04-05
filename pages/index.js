@@ -4,12 +4,13 @@ import Sidebar from '../components/sidebar'
 import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
-import { getAllPostsForHome } from '../lib/api'
+import { getAllPostsForHome, getAllAemComponentCategoriesAndPosts } from '../lib/api'
 import { CMS_NAME } from '../lib/constants'
 
-export default function Index({ allPosts: { edges }, preview }) {
+export default function Index({ allPosts: { aemComponentCategories: {edges} }, preview }) {
+
   const heroPost = edges[0]?.node
-  const morePosts = edges.slice(1)
+  const posts = edges
 
   return (
     <>
@@ -20,11 +21,11 @@ export default function Index({ allPosts: { edges }, preview }) {
         <Container>
           {heroPost && (
             <HeroPost
-              title={heroPost.title}
+              title={"Hello There"}
               slug={heroPost.slug}
             />
           )}
-          {morePosts.length > 0 && <Sidebar posts={morePosts} />}
+          {posts.length > 0 && <Sidebar posts={posts} />}
         </Container>
       </Layout>
     </>
@@ -32,7 +33,11 @@ export default function Index({ allPosts: { edges }, preview }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const allPosts = await getAllPostsForHome(preview)
+  const allPosts = await getAllAemComponentCategoriesAndPosts(preview)
+
+  console.log("🖖 allPosts: ")
+  console.log(allPosts)
+
   return {
     props: { allPosts, preview },
   }
