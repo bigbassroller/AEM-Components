@@ -7,7 +7,7 @@ import Header from '../../components/header'
 import PostHeader from '../../components/post-header'
 import SectionSeparator from '../../components/section-separator'
 import Layout from '../../components/layout'
-import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api'
+import { getAllPostsWithSlug, getPostAndMorePosts, getAllAemComponentCategoriesAndPosts } from '../../lib/api'
 import PostTitle from '../../components/post-title'
 import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
@@ -16,9 +16,9 @@ import Tags from '../../components/tags'
 import PanelBtn from '../../components/panel-btn'
 import Example from '../../components/example'
 
-export default function Post({ post, posts, preview }) {
+export default function Post({ allPosts: { aemComponentCategories: {edges} }, post, preview }) {
   const router = useRouter()
-  const morePosts = posts?.edges
+  const posts = edges
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -31,7 +31,7 @@ export default function Post({ post, posts, preview }) {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            {morePosts.length > 0 && <Sidebar posts={morePosts} />}
+            {posts.length > 0 && <Sidebar posts={posts} />}
             <article className="content-wrapper">
               <Head>
                 <title>
@@ -91,10 +91,12 @@ export default function Post({ post, posts, preview }) {
 
 export async function getStaticProps({ params, preview = false, previewData }) {
   const data = await getPostAndMorePosts(params.slug, preview, previewData)
+  const allPosts = await getAllAemComponentCategoriesAndPosts(preview)
 
   return {
     props: {
       preview,
+      allPosts,
       post: data.aemcomponent,
       posts: data.aemcomponents,
     },
