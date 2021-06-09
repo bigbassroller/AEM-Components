@@ -30,7 +30,7 @@ export default function Post({post, posts, preview}) {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-
+            {posts.edges.length > 0 && <Sidebar posts={posts.edges} />}
             <article className="content-wrapper">
               <Head>
                 <title>
@@ -90,14 +90,13 @@ export default function Post({post, posts, preview}) {
 
 export async function getStaticProps({ params, preview = false, previewData }) {
   const data = await getPostAndMorePosts(params.slug, preview, previewData)
-  const allPosts = await getAllAemComponentCategoriesAndPosts(preview)
+  const categories_data = await getAllAemComponentCategoriesAndPosts(preview)
 
   return {
     props: {
       preview,
-      allPosts,
       post: data.aemcomponent,
-      posts: data.aemcomponents,
+      posts: categories_data.aemComponentCategories,
     },
   }
 }
