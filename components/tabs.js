@@ -1,4 +1,6 @@
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import dynamic from 'next/dynamic'
+const Tabs = dynamic(import('react-tabs').then(mod => mod.Tabs), { ssr: false }) // disable ssr
+import { Tab, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 if (typeof navigator !== 'undefined') {
