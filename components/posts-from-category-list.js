@@ -6,19 +6,16 @@ export default function PostsFromCategoryList({
   slug,
   aemcomponents,
 }) {
-  console.log("🚡 aemcomponents")
-  console.log(aemcomponents)
   return (
-    <li>
-
+    <div>
       <Link as={`/aemcomponents/${slug}`} href="/aemcomponents/[slug]">
         <a
           className="text-red-500"
           dangerouslySetInnerHTML={{ __html: title }}
         ></a>
       </Link>
-      <ul>
-        <li>
+      <div>
+        <div>
           {aemcomponents.nodes.map(node => (
             <PostPreview
               key={node.id}
@@ -26,8 +23,8 @@ export default function PostsFromCategoryList({
               slug={node.slug}
             />
           ))}
-        </li>
-      </ul>
-    </li>
+        </div>
+      </div>
+    </div>
   )
 }

@@ -16,9 +16,8 @@ import Tags from '../../components/tags'
 import PanelBtn from '../../components/panel-btn'
 import Example from '../../components/example'
 
-export default function Post({ allPosts: { aemComponentCategories: {edges} }, post, preview }) {
+export default function Post({post, posts, preview}) {
   const router = useRouter()
-  const posts = edges
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -31,7 +30,7 @@ export default function Post({ allPosts: { aemComponentCategories: {edges} }, po
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            {posts.length > 0 && <Sidebar posts={posts} />}
+            {posts.edges.length > 0 && <Sidebar posts={posts.edges} />}
             <article className="content-wrapper">
               <Head>
                 <title>
@@ -91,14 +90,13 @@ export default function Post({ allPosts: { aemComponentCategories: {edges} }, po
 
 export async function getStaticProps({ params, preview = false, previewData }) {
   const data = await getPostAndMorePosts(params.slug, preview, previewData)
-  const allPosts = await getAllAemComponentCategoriesAndPosts(preview)
+  const categories_data = await getAllAemComponentCategoriesAndPosts(preview)
 
   return {
     props: {
       preview,
-      allPosts,
       post: data.aemcomponent,
-      posts: data.aemcomponents,
+      posts: categories_data.aemComponentCategories,
     },
   }
 }

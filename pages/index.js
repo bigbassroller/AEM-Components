@@ -35,9 +35,6 @@ export default function Index({ allPosts: { aemComponentCategories: {edges} }, p
 export async function getStaticProps({ preview = false }) {
   const allPosts = await getAllAemComponentCategoriesAndPosts(preview)
 
-  console.log("🖖 allPosts: ")
-  console.log(allPosts)
-
   return {
     props: { allPosts, preview },
   }
