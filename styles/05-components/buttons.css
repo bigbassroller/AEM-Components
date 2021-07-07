@@ -1,0 +1,6 @@
+.buttons {
+	@apply my-8;
+	& > * + * {
+	  @apply ml-4;
+	}
+}

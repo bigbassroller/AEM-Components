@@ -1,0 +1,17 @@
+.panel-btn {
+	@apply bg-gray-100;
+	@apply inline-flex items-center rounded-sm;
+	@apply pr-6 py-3;
+	@apply border border-transparent shadow-sm;
+	@apply text-base font-bold text-gray-800;
+	@apply hover:bg-gray-200;
+	@apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500;
+	span {
+		@apply leading-5;
+	}
+	.img-wrap {
+		@apply px-4;
+	}
+	.content-wrap {
+	}
+}

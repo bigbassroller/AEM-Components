@@ -1,11 +1,13 @@
 import Image from 'next/image'
 
 function Logo({
-	url,
-	name
+	name,
+	height,
+	width,
+	url
 }) {
   return (
-  	<img src={ `/${url}` } alt={name} width="24" height="24" />
+  	<img src={ `/${url}` } alt={name} width={ `${width}` } height={ `${height}` } />
   )
 }
 

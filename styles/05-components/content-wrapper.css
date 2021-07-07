@@ -1,0 +1,5 @@
+/*Content Wrapper*/
+.content-wrapper {
+	@apply min-w-0 w-full flex-auto lg:static lg:max-h-full lg:overflow-visible;
+	@apply px-8 mb-8;
+}
